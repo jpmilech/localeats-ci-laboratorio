@@ -10,6 +10,13 @@ Funcionalidade: Cálculo do total do pedido
     Quando eu calcular o total do pedido
     Então o total deve ser 48.00
 
+  Cenário: Frete grátis exatamente no limite mínimo
+    Dado um pedido com o item "Combo" de preço 50.00 e quantidade 1
+    E uma taxa de entrega de 8.00
+    E frete grátis a partir de 50.00
+    Quando eu calcular o total do pedido
+    Então o total deve ser 50.00
+
   Cenário: Desconto não deixa o total negativo
     Dado um pedido com o item "Suco" de preço 10.00 e quantidade 1
     E um desconto de 999.00
