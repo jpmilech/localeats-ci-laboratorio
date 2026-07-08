@@ -26,7 +26,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Testes unitários (pytest)
-        run: pytest -v
+        run: python -m pytest -v
 
       - name: Testes BDD (behave)
-        run: behave
+        run: python -m behave
