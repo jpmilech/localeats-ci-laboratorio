@@ -22,8 +22,8 @@ def calculate_order_total(items, delivery_fee=0.0, discount=0.0,
     subtotal = sum(item["price"] * item["quantity"] for item in items)
 
     fee = delivery_fee
-    if free_delivery_threshold is not None and subtotal > free_delivery_threshold:
-        # Frete grátis acima do valor mínimo.
+    if free_delivery_threshold is not None and subtotal >= free_delivery_threshold:
+        # Frete grátis a partir do valor mínimo (inclusive).
         fee = 0.0
 
     total = subtotal + fee - discount
