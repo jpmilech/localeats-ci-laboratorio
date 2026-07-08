@@ -45,3 +45,16 @@ def test_frete_cobrado_abaixo_do_limite():
         items, delivery_fee=8.0, free_delivery_threshold=50.0
     )
     assert total == 57.9
+
+
+def test_frete_gratis_exatamente_no_limite():
+    """Reproduz a Issue #2: pedido igual ao limite deve ter frete grátis.
+
+    Regra: frete grátis a partir de R$ 50,00 (inclusive). Um pedido de
+    exatamente R$ 50,00 NÃO pode ser cobrado pela entrega.
+    """
+    items = [{"price": 50.0, "quantity": 1}]
+    total = calculate_order_total(
+        items, delivery_fee=8.0, free_delivery_threshold=50.0
+    )
+    assert total == 50.0
